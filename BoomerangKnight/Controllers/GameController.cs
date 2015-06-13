@@ -8,7 +8,6 @@ namespace BoomerangKnight.Controllers
 {
     public class GameController : Controller
     {
-        // GET: Game
         public ActionResult Index()
         {
             return View();
