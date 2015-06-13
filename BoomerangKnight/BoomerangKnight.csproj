@@ -190,6 +190,10 @@
     <Content Include="favicon.ico" />
     <Content Include="Global.asax" />
     <Content Include="Content\Site.css" />
+    <Content Include="Images\Game\background.png" />
+    <Content Include="Images\Game\boomerangFin.svg" />
+    <Content Include="Images\Game\heroFin.svg" />
+    <Content Include="Images\Game\monster.svg" />
     <Content Include="Images\UI\arrow.png" />
     <Content Include="Images\UI\background.png" />
     <Content Include="Images\UI\capture.png" />
@@ -203,10 +207,10 @@
     <Content Include="Images\UI\teamDeathmatch.png" />
     <Content Include="Images\UI\Total.png" />
     <Content Include="Images\UI\username.png" />
+    <Content Include="Scripts\boom.js" />
     <Content Include="Scripts\bootstrap.js" />
     <Content Include="Scripts\bootstrap.min.js" />
     <None Include="Scripts\jquery-1.10.2.intellisense.js" />
-    <Content Include="Scripts\game.js" />
     <Content Include="Scripts\jquery-1.10.2.js" />
     <Content Include="Scripts\jquery-1.10.2.min.js" />
     <None Include="Scripts\jquery.validate-vsdoc.js" />
@@ -240,7 +244,6 @@
   </ItemGroup>
   <ItemGroup>
     <Folder Include="App_Data\" />
-    <Folder Include="Images\Game\" />
   </ItemGroup>
   <ItemGroup>
     <Content Include="packages.config" />
