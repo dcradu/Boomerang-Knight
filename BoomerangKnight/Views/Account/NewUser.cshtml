@@ -1,14 +1,23 @@
-﻿<div id="containerWithBackground">
+﻿@model string
+
+
+<div id="containerWithBackground">
     <div id="logoContainer">
         <img src="~/Images/UI/logo.png" />
     </div> <br> <br> <br> <br> <br> <br>
-    <table>
-        <tr>
-            <td><img src="~/Images/UI/username.png" /></td>
-            <td><input class="usernameInput" type="text"></input></td>
-        </tr>
-    </table>  <br> <br>
-    <div id="arrowContainer">
-            <img src="~/Images/UI/arrow.png" />
-    </div>
+    
+
+    @using (Html.BeginForm("NewUser", "Account"))
+    {
+        <table>
+            <tr>
+                <td><img src="~/Images/UI/username.png" /></td>
+                <td><input name="userName" class="usernameInput" type="text"></td>
+            </tr> 
+        </table>  <br> <br>
+        
+            <div id="arrowContainer">
+                <input type="image" src="~/Images/UI/arrow.png" alt="Submit Form" />
+            </div>
+    }
 </div>

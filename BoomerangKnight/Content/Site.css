@@ -1,24 +1,73 @@
-﻿body {
-    padding-top: 50px;
-    padding-bottom: 20px;
+﻿
+* {
+	margin: 0;
+	padding: 0;
 }
 
-/* Set padding to keep content from hitting the edges */
-.body-content {
-    padding-left: 15px;
-    padding-right: 15px;
+#containerWithBackground {
+	background-image: url("../Images/UI/background.png");
+    height:100vh;
 }
 
-/* Override the default bootstrap behavior where horizontal description lists 
-   will truncate terms that are too long to fit in the left column 
-*/
-.dl-horizontal dt {
-    white-space: normal;
+#logoContainer {
+	text-align: center;
 }
 
-/* Set width on the form input elements since they're 100% wide by default */
-input,
-select,
-textarea {
-    max-width: 280px;
+.gameTypeContainer {
+	text-align: center;
+	width: 100%;
+}
+
+#bar {
+	float: right;
+	width: 20%;
+	height: 100%;
+	background-image: url("../Images/UI/background.png");
+    height:100vh;
+}
+
+
+#logoContainer {
+	text-align: center;
+}
+table {
+	margin-right: auto;
+	margin-left: auto;
+}
+.passwordInput
+{
+  width: 250px;
+  height: 40px;		
+}
+.emailInput
+{
+  width: 250px;
+  height: 40px;
+}
+input
+{
+	font-size: 200%;
+}
+#arrowContainer {
+	text-align: center;
+}
+
+#logoContainer {
+	text-align: center;
+}
+table {
+	margin-right: auto;
+	margin-left: auto;
+}
+.usernameInput
+{
+  width: 250px;
+  height: 40px;
+}
+input
+{
+	font-size: 200%;
+}
+#arrowContainer {
+	text-align: center;
 }
