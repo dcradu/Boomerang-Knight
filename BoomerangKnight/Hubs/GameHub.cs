@@ -12,16 +12,19 @@ namespace BoomerangKnight.Hubs
     {
         private static List<Player> _players = new List<Player>();
 
-        public void UpdateLocation(float x, float y)
+        public void UpdateLocation(float x, float y, float boomerangX, float boomerangY)
         {
             var player = _players.Find(p => p.ConnectionId == Context.ConnectionId);
 
             player.X = x;
             player.Y = y;
 
+            player.BoomerangX = boomerangX;
+            player.BoomerangY = boomerangY;
+
             UpdatePlayersOnClient();
         }
-
+  
         public override Task OnConnected()
         {
             var newPlayer = new Player(Context.ConnectionId, "NewPlayer");
@@ -44,7 +47,31 @@ namespace BoomerangKnight.Hubs
 
         private void UpdatePlayersOnClient()
         {
-            Clients.AllExcept(new string[] { Context.ConnectionId }).updatePlayers(_players);
+            Clients.AllExcept(new[] { Context.ConnectionId }).updatePlayers(_players);
+        }
+
+        public void BoomerangHit(string hitPlayerConnectionId)
+        {
+            var player = _players.First(x => x.ConnectionId == hitPlayerConnectionId);
+            
+            if(player.Health > 25) 
+            {
+                player.Health -= 25;
+            }
+            else
+            {
+                _players.Remove(player);
+                _players.Add(new Player(player.ConnectionId, player.Username)
+                            {
+                                Deaths = player.Deaths + 1,
+                                Kills = player.Kills
+                            });
+                Clients.Client(hitPlayerConnectionId).reset();
+
+                _players.First(x => x.ConnectionId == Context.ConnectionId).Kills++;
+            }
+
+            UpdatePlayersOnClient();
         }
     }
 }

@@ -10,11 +10,10 @@ namespace BoomerangKnight.Models
         public Player(string connectionId, string username)
         {
             this.ConnectionId = connectionId;
-            this.Username = username; 
-            this.X = 10;
-            this.Y = 10;
+            this.Username = username;
             this.Kills = 0;
             this.Deaths = 0;
+            this.Health = 100;
         }
 
         public string ConnectionId { get; set; }
@@ -30,6 +29,12 @@ namespace BoomerangKnight.Models
         public float X { get; set; }
                
         public float Y { get; set; }
+
+        public int Health { get; set; }
+
+        public float BoomerangX { get; set; }
+
+        public float BoomerangY { get; set; }
 
         public PlayerLevel PlayerLevel
         {
