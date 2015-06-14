@@ -20,9 +20,8 @@
 
 #bar {
 	float: right;
-	width: 20%;
+	width: 22%;
 	height: 100%;
-	background-image: url("../Images/UI/background.png");
     height: 100vh;
 }
 
@@ -70,4 +69,11 @@ input
 }
 #arrowContainer {
 	text-align: center;
+}
+
+.userPanelItem {
+    float: right;
+    padding: 10px;
+    color: black;
+    font-size: 33px;
 }
