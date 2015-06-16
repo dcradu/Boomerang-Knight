@@ -245,6 +245,7 @@ monsterImage.src = "../Images/Game/monster.svg";
              && newY + height > currentPlayers[i].Y) {
 
                 hitPlayerConnectionId = currentPlayers[i].ConnectionId;
+                gethit.play();
                 return true;
             }
         }
@@ -283,7 +284,9 @@ monsterImage.src = "../Images/Game/monster.svg";
 
             if (isCollisionWihPlayerDetected(boomerang.x, boomerang.y)) {
                 gameHub.server.boomerangHit(hitPlayerConnectionId);
+                gethit.play();
                 boomerang.clicked = false;
+               
             }
 
 
@@ -354,19 +357,19 @@ monsterImage.src = "../Images/Game/monster.svg";
             for (var i = 0; i < currentPlayers.length; i++) {
                 {
                     if (gameHub.connection.id == currentPlayers[i].ConnectionId) {
-//fsdsfs
+
                         userPanel.health.innerHTML = currentPlayers[i].Health;
                         userPanel.kills.innerHTML = currentPlayers[i].Kills;
                         userPanel.deaths.innerHTML = currentPlayers[i].Deaths;
                         hero.kills = currentPlayers[i].Kills;
-                        if (hero.kills < 1)
+                        hero.health = currentPlayers[i].Health;
+                        if (hero.health < 1)
                             dieing.play();
-                        //afiseaza pentru erou curent text xxx
                         ctx.fillText("xxx", hero.x, hero.y);
                     }
                     else
 
-                    {   //afiseaza pt inamici xxx
+                    {
                         ctx.fillText("xxx", currentPlayers[i].X, currentPlayers[i].Y);
                         if (boomerangReady) {
                             ctx.drawImage(boomerangImage, currentPlayers[i].BoomerangX, currentPlayers[i].BoomerangY);
