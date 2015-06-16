@@ -55,6 +55,35 @@ monsterImage.src = "../Images/Game/monster.svg";
     heroImage.src = "../Images/Game/heroFin.svg";
 
 
+    var level1Ready = false;
+    var heroLevel1 = new Image();
+    heroLevel1.onload = function () {
+        level1Ready = true;
+    };
+    heroLevel1.src = "../Images/Game/level1.svg";
+
+
+    var level2Ready = false;
+    var heroLevel2 = new Image();
+    heroLevel2.onload = function () {
+        level2Ready = true;
+    };
+    heroLevel2.src = "../Images/Game/level2.svg";
+
+    var level3Ready = false;
+    var heroLevel3 = new Image();
+    heroLevel3.onload = function () {
+        level3Ready = true;
+    };
+    heroLevel3.src = "../Images/Game/level3.svg";
+
+    var level4Ready = false;
+    var heroLevel4 = new Image();
+    heroLevel4.onload = function () {
+        level4Ready = true;
+    };
+    heroLevel4.src = "../Images/Game/level4.svg";
+
     var boomerangReady = false;
     var boomerangImage = new Image();
     boomerangImage.onload = function () {
@@ -280,9 +309,30 @@ monsterImage.src = "../Images/Game/monster.svg";
 
         //aici puse obstacole... ordinea conteaza  imaginile se pot suprapune picteaza layer peste layer fiecare pixel whatev
         //...
-        if (heroReady) {
-            ctx.drawImage(heroImage, hero.x, hero.y);
+        if (hero.kills < 10) {
+            if (heroReady) {
+                ctx.drawImage(heroImage, hero.x, hero.y);
+            }
         }
+        else if (hero.kills < 25) {
+            if (level1Ready) {
+                ctx.drawImage(heroLevel1, hero.x, hero.y);
+            }
+        }
+        else if (hero.kills < 50) {
+            if (level2Ready) {
+                ctx.drawImage(heroLevel2, hero.x, hero.y);
+            }
+        }
+        else if (hero.kills < 75) {
+            if (level3Ready) {
+                ctx.drawImage(heroLevel3, hero.x, hero.y);
+            }
+        }
+        else if (level4Ready) {
+            ctx.drawImage(heroLevel4, hero.x, hero.y);
+        }
+        
 
         if (boomerangReady) {
             ctx.drawImage(boomerangImage, boomerang.x, boomerang.y);
@@ -292,10 +342,11 @@ monsterImage.src = "../Images/Game/monster.svg";
 
         // scor momentan afisat pe acelasi canvas... bpl pun pe altu l8r in panel cum stabilisem in baza
         ctx.fillStyle = "rgb(250, 250, 250)";
-        ctx.font = "24px Helvetica";
-        ctx.textAlign = "left";
-        ctx.textBaseline = "top";
-        //ctx.fillText("Capete in gura: " + scor, 32, 32);
+      //  ctx.font = "24px Helvetica";
+      //  ctx.textAlign = "left";
+        //  ctx.textBaseline = "top";
+
+        
     };
 
     var renderOpponents = function () {
@@ -303,17 +354,50 @@ monsterImage.src = "../Images/Game/monster.svg";
             for (var i = 0; i < currentPlayers.length; i++) {
                 {
                     if (gameHub.connection.id == currentPlayers[i].ConnectionId) {
-
+//fsdsfs
                         userPanel.health.innerHTML = currentPlayers[i].Health;
                         userPanel.kills.innerHTML = currentPlayers[i].Kills;
                         userPanel.deaths.innerHTML = currentPlayers[i].Deaths;
+                        hero.kills = currentPlayers[i].Kills;
+                        if (hero.kills < 1)
+                            dieing.play();
+                        //afiseaza pentru erou curent text xxx
+                        ctx.fillText("xxx", hero.x, hero.y);
                     }
-                    else if (monsterReady) {
+                    else
 
-                        ctx.drawImage(monsterImage, currentPlayers[i].X, currentPlayers[i].Y, 40, 40);
-                        ctx.drawImage(boomerangImage, currentPlayers[i].BoomerangX, currentPlayers[i].BoomerangY, 40, 40);
+                    {   //afiseaza pt inamici xxx
+                        ctx.fillText("xxx", currentPlayers[i].X, currentPlayers[i].Y);
+                        if (boomerangReady) {
+                            ctx.drawImage(boomerangImage, currentPlayers[i].BoomerangX, currentPlayers[i].BoomerangY);
+                        }
+                        if (currentPlayers[i].Kills < 10) {
+                            if (heroReady) {
+                                ctx.drawImage(heroImage, currentPlayers[i].X, currentPlayers[i].Y);
+                            }
+                        }
+                        else if (currentPlayers[i].Kills < 25) {
+                            if (level1Ready) {
+                                ctx.drawImage(heroLevel1, currentPlayers[i].X, currentPlayers[i].Y);
+                            }
+                        }
+                        else if (currentPlayers[i].Kills < 50) {
+                            if (level2Ready) {
+                                ctx.drawImage(heroLevel2, currentPlayers[i].X, currentPlayers[i].Y);
+                            }
+                        }
+                        else if (currentPlayers[i].Kills < 75) {
+                            if (level3Ready) {
+                                ctx.drawImage(heroLevel3, currentPlayers[i].X, currentPlayers[i].Y);
+                            }
+                        }
+                        else if (level4Ready) {
+                            ctx.drawImage(heroLevel4, currentPlayers[i].X, currentPlayers[i].Y);
+                        }
 
-                    }
+
+                        
+                     }
                 }
             }
         }

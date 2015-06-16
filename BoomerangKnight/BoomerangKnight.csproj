@@ -193,7 +193,15 @@
     <Content Include="Images\Game\background.png" />
     <Content Include="Images\Game\boomerangFin.svg" />
     <Content Include="Images\Game\heroFin.svg" />
+    <Content Include="Images\Game\level1.svg" />
+    <Content Include="Images\Game\level2.svg" />
+    <Content Include="Images\Game\level3.svg" />
+    <Content Include="Images\Game\level4.svg" />
     <Content Include="Images\Game\monster.svg" />
+    <Content Include="Images\Game\obstacol.png" />
+    <Content Include="Images\Game\obstacol1.png" />
+    <Content Include="Images\Game\tree1.png" />
+    <Content Include="Images\Game\tree2.png" />
     <Content Include="Images\UI\arrow.png" />
     <Content Include="Images\UI\background.png" />
     <Content Include="Images\UI\capture.png" />
