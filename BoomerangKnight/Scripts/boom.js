@@ -233,7 +233,7 @@ monsterImage.src = "../Images/Game/monster.svg";
         var i;
 
         if (currentPlayers == undefined) {
-            return true;
+            return false;
         }
 
         for (i = 0; i < currentPlayers.length; i++) {
@@ -475,7 +475,7 @@ monsterImage.src = "../Images/Game/monster.svg";
     // Start the connection.
     $.connection.hub.start().done(function () {
 
-        setInterval(updateLocation, 1000/30);
+        setInterval(updateLocation, 1000/15);
         //aici ar trebui sa-i trimitem username-ul serverului dar mai incolo;
     });
 })();

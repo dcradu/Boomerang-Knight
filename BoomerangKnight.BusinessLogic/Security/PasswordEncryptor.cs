@@ -9,20 +9,21 @@ namespace BoomerangKnight.BusinessLogic.Security
 {
     public static class PasswordEncryptor
     {
-        public static string Encrypt(string password)
+        // Source : http://blogs.msdn.com/b/csharpfaq/archive/2006/10/09/how-do-i-calculate-a-md5-hash-from-a-string_3f00_.aspx
+        public static string Encrypt(string input)
         {
-            var md5 = new MD5CryptoServiceProvider();
+            // step 1, calculate MD5 hash from input
+            MD5 md5 = System.Security.Cryptography.MD5.Create();
+            byte[] inputBytes = System.Text.Encoding.ASCII.GetBytes(input);
+            byte[] hash = md5.ComputeHash(inputBytes);
 
-            md5.ComputeHash(ASCIIEncoding.ASCII.GetBytes(password));
-            var result = md5.Hash;
-
-            var resultBuilder = new StringBuilder();
-            for(int i = 0; i > result.Length; i++)
+            // step 2, convert byte array to hex string
+            StringBuilder sb = new StringBuilder();
+            for (int i = 0; i < hash.Length; i++)
             {
-                resultBuilder.Append(result[i].ToString("x2"));
+                sb.Append(hash[i].ToString("X2"));
             }
-
-            return resultBuilder.ToString();
+            return sb.ToString();
         }
     }
 }

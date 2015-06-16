@@ -48,7 +48,7 @@ namespace BoomerangKnight.DataAccess
         {
             using (var context = new BoomerangKnightContext())
             {
-                return String.IsNullOrEmpty(context.Players.First(x => x.Email.Equals(email)).Email);
+                return !String.IsNullOrEmpty(context.Players.First(x => x.Email.Equals(email)).Username);
             }
         }
 

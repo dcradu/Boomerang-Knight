@@ -1,11 +1,25 @@
-﻿<div id="containerWithBackground">
+﻿<script src="~/Scripts/jquery-1.10.2.min.js"></script>
+<script type="text/javascript">
+    $(document).ready(function () {
+        $('#disconnectImage').click(function () {
+            $.ajax({
+                url: '@Url.Action("Disconnect", controllerName: "Account")',
+                success: function () {
+                    document.location.reload();
+                }
+            });
+        });
+    });
+</script>
+
+<div id="containerWithBackground">
     <div id="logoContainer">
-        <img src="logo.png" />
+        <img src="~/Images/UI/logo.png" />
     </div>
     <br> <br> <br> <br> <br> <br>
 
     <div class="gameTypeContainer">
-        <img src="~/Images/UI/deathmatch.png" />
+        <a href="~/Game/Game"><img src="~/Images/UI/deathmatch.png" /></a>
     </div>
 
     <div class="gameTypeContainer">
@@ -16,4 +30,9 @@
         <img src="~/Images/UI/capture.png" />
     </div>
     <br> <br>
+
+    <div class="disconnectPanel">
+        <div class="emailDisconnect">@User.Identity.Name</div>
+        <img id="disconnectImage" src="~/Images/UI/disconnect.png" />
+    </div>
 </div>

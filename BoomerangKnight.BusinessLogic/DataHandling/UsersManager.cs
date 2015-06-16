@@ -29,7 +29,7 @@ namespace BoomerangKnight.BusinessLogic.DataHandling
 
         public void AddUser(string email, string password)
         {
-            _usersRepository.AddUser(email, password);
+            _usersRepository.AddUser(email, PasswordEncryptor.Encrypt(password));
         }
 
         public bool IsUserNameAvailable(string userName)

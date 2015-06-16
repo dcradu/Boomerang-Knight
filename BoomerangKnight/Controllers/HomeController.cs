@@ -8,6 +8,7 @@ namespace BoomerangKnight.Controllers
 {
     public class HomeController : Controller
     {
+        [Authorize]
         public ActionResult ChooseGame()
         {
             return View();

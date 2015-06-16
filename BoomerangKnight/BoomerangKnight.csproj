@@ -207,6 +207,7 @@
     <Content Include="Images\UI\capture.png" />
     <Content Include="Images\UI\deathmatch.png" />
     <Content Include="Images\UI\Deaths.png" />
+    <Content Include="Images\UI\disconnect.png" />
     <Content Include="Images\UI\email.png" />
     <Content Include="Images\UI\Health.png" />
     <Content Include="Images\UI\Kills.png" />

@@ -1,5 +1,19 @@
 ﻿@model string
 
+<script src="~/Scripts/jquery-1.10.2.min.js"></script>
+<script type="text/javascript">
+    $(document).ready(function () {
+        $('#disconnectImage').click(function () {
+            $.ajax({
+                url: '@Url.Action("Disconnect", controllerName: "Account")',
+                method: 'GET',
+                success: function () {
+                    document.location.reload();
+                }
+            });
+        });
+    });
+</script>
 
 <div id="containerWithBackground">
     <div id="logoContainer">
@@ -20,4 +34,9 @@
                 <input type="image" src="~/Images/UI/arrow.png" alt="Submit Form" />
             </div>
     }
+
+    <div class="disconnectPanel">
+        <div class="emailDisconnect">@HttpContext.Current.User.Identity.Name</div>
+        <img id="disconnectImage" src="~/Images/UI/disconnect.png" />
+    </div>
 </div>

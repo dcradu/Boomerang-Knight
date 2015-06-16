@@ -11,6 +11,7 @@ using Microsoft.Owin.Security;
 using BoomerangKnight.Models;
 using BoomerangKnight.BusinessLogic.DataHandling;
 using System.Web.Security;
+using System.Security.Principal;
 
 namespace BoomerangKnight.Controllers
 {
@@ -33,7 +34,7 @@ namespace BoomerangKnight.Controllers
                     FormsAuthentication.SetAuthCookie(login.Email, false);
                     if (!_usersManager.IsUsernameSetForEmail(login.Email))
                     {
-                        return View("NewUser");
+                        return RedirectToAction("NewUser");
                     }
                     return RedirectToAction("ChooseGame", controllerName: "Home");
                     
@@ -46,33 +47,37 @@ namespace BoomerangKnight.Controllers
                         _usersManager.AddUser(login.Email, login.Password);
                     }
                     FormsAuthentication.SetAuthCookie(login.Email, false);
-                    return View("NewUser");
+                    return RedirectToAction("NewUser");
             }
 
             return View();
         }
 
         [HttpGet]
+        [Authorize]
         public ActionResult NewUser()
         {
             return View();
         }
 
         [HttpPost]
+        [Authorize]
         public ActionResult NewUser(string userName)
         {
             if (_usersManager.IsUserNameAvailable(userName))
             {
-                HttpCookie authCookie = Request.Cookies[FormsAuthentication.FormsCookieName];
-                FormsAuthenticationTicket ticket = FormsAuthentication.Decrypt(authCookie.Value);
-                string email = ticket.Name;
-
-                _usersManager.RegisterUserNameForEmail(userName, email);
+                _usersManager.RegisterUserNameForEmail(userName, User.Identity.Name);
                 
                 return RedirectToAction("ChooseGame", controllerName: "Home");
             }
        
             return View();
+        }
+
+        public void Disconnect()
+        {
+            FormsAuthentication.SignOut();
+            HttpContext.User = new GenericPrincipal(new GenericIdentity(string.Empty), null);
         }
     }
 }
