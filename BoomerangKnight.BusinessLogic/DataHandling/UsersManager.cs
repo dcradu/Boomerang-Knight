@@ -51,5 +51,10 @@ namespace BoomerangKnight.BusinessLogic.DataHandling
         {
             return _usersRepository.IsEmailRegistered(email);
         }
+
+        public string GetUsernameByEmail(string email)
+        {
+            return _usersRepository.GetUsernameByEmail(email);
+        }
     }
 }

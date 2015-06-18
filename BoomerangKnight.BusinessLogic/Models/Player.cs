@@ -3,7 +3,7 @@ using System.Collections.Generic;
 using System.Linq;
 using System.Web;
 
-namespace BoomerangKnight.Models
+namespace BoomerangKnight.BusinessLogic.Models
 {
     public class Player
     {
@@ -43,11 +43,26 @@ namespace BoomerangKnight.Models
                 PlayerLevel playerLevel = Models.PlayerLevel.Knight;
 
                 if (Kills < 10) playerLevel = Models.PlayerLevel.Tool;
-                else if (Kills < 25) playerLevel = Models.PlayerLevel.Poser;
-                else if (Kills < 50) playerLevel = Models.PlayerLevel.Hustler;
+                else if (Kills < 20) playerLevel = Models.PlayerLevel.Poser;
+                else if (Kills < 29) playerLevel = Models.PlayerLevel.Hustler;
 
                 return playerLevel;                
             }
+        }
+
+        public string Rank
+        {
+            get
+            {
+                return PlayerLevel.ToString();
+            }
+        }
+
+        public void ResetStats()
+        {
+            this.Kills = 0;
+            this.Deaths = 0;
+            this.Health = 100;
         }
     }
 }

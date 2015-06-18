@@ -71,5 +71,21 @@ namespace BoomerangKnight.DataAccess
                 { }
             }
         }
+
+        public string GetUsernameByEmail(string email)
+        {
+            using(var context = new BoomerangKnightContext())
+            {
+                return context.Players.First(x => x.Email.Equals(email)).Username;
+            }
+        }
+
+        public int GetIdByUsername(string username)
+        {
+            using(var context = new BoomerangKnightContext())
+            {
+                return context.Players.First(x => x.Username.Equals(username)).Id;
+            }
+        }
     }
 }

@@ -39,9 +39,13 @@ namespace BoomerangKnight.Controllers
                     return RedirectToAction("ChooseGame", controllerName: "Home");
                     
                 case AuthenticateUserResult.WrongPassword:
-                    return View("Wrong password!");
+                    return View();
 
                 case AuthenticateUserResult.NewUser:
+                    if (!ModelState.IsValid)
+                    {
+                        return View(login);
+                    }
                     if (!_usersManager.IsEmailRegistered(login.Email))
                     {
                         _usersManager.AddUser(login.Email, login.Password);

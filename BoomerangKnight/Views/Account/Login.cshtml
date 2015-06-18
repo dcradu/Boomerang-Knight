@@ -12,21 +12,22 @@
         <img src="~/Images/UI/logo.png" />
     </div> <br> <br> <br> <br> <br> <br>
     
-    @using(Html.BeginForm())
-    { 
-    <table>
-        <tr>
-            <td><img src="~/Images/UI/email.png" /></td>
-            <td>@Html.TextBoxFor(model => model.Email)</td> 
-           @* <td><input class="emailInput" type="text"></td>*@
-        </tr>
-        <tr>
-            <td><img src="~/Images/UI/password.png" /></td>
-            <td>@Html.TextBoxFor(model => model.Password)</td>
-        @*    <td><input class="passwordInput" type="password"></td>*@
-    </table>  <br> <br>
-    <div id="arrowContainer">
-        <input type="image" src="~/Images/UI/arrow.png" alt="Submit Form" />
-    </div>
+    @using (Html.BeginForm())
+    {
+        @Html.ValidationSummary(true)
+        <table>
+            <tr>
+                <td><img src="~/Images/UI/email.png" /></td>
+                <td>@Html.TextBoxFor(model => model.Email)</td> 
+                <td>@Html.ValidationMessageFor(model => model.Email)</td>
+            </tr>
+            <tr>
+                <td><img src="~/Images/UI/password.png" /></td>
+                <td>@Html.PasswordFor(model => model.Password)</td>
+                <td>@Html.ValidationMessageFor(model => model.Password)</td>
+        </table>  <br> <br>
+        <div id="arrowContainer">
+            <input type="image" src="~/Images/UI/arrow.png" alt="Submit Form" />
+        </div>
     }
 </div>
